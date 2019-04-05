@@ -3,7 +3,6 @@ class UnholyFactory
 {
 	private $array = array();
 	private $fabricate = array();
-	private $absorb;
 	private $type_f;
 	public function absorb( $type )
 	{
@@ -48,11 +47,6 @@ class UnholyFactory
 			}
 		}
 		print("(Factory hasn't absorbed any fighter of type ". $change . ")". PHP_EOL);
-	}
-	public function fight( $fight )
-	{
-		echo "OK";
-		print_r($this->fabricate);
 	}
 }
 ?>
