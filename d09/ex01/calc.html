@@ -1,0 +1,52 @@
+<html>
+	<body>
+		<div>
+			<input id="left" name="left" type="text">
+			<select id="select" ame="cars">
+				<option value="sum">+</option>
+				<option value="res">-</option>
+				<option value="mult">*</option>
+				<option value="div">/</option>
+				<option value="mod">%</option>
+			</select>
+			<input id="right" name="right" type="text">
+			<input id="submit" type="submit" value="Try me!" >
+		</div>
+			<script>
+document.getElementById("submit").onclick = function() {myFunction()};
+var myVar = setTimeout(function message(){ alert("Please, use me..."); setTimeout(message, 30000); }, 30000);
+
+function myFunction() {
+	let l = +document.getElementById("left").value;
+	let r = +document.getElementById("right").value;
+	let s = document.getElementById("select").value;
+	let a = 0;
+	if (r === 0 && (s === "div" || s === "mod"))
+	{
+		alert("It's over 9000!");
+		console.log("It's over 9000!");
+	}
+	else if (l >= 0 && r >= 0)
+	{
+		if (s == "sum")
+			a = l + r;
+		else if (s === "res")
+			a = l - r;
+		else if (s === "mult")
+			a = l * r;
+		else if (s === "div")
+			a = l / r;
+		else if (s === "mod")
+			a = l % r;
+		alert(a);
+		console.log(a);
+	}
+	else
+	{
+		alert("Error :(");
+		console.log("Error :(");
+	}
+}
+			</script>
+	</body>
+</html>

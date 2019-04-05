@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div id="ft_list">
+		</div>
+		<input id="submit" type="submit" value="new">
+		<script>
+document.getElementById("submit").onclick = function() {myFunction()};
+function myFunction() {
+	let txt = prompt("Saisissez votre texte :", "Texte");
+	let div = document.createElement("div");
+	div.innerHTML = txt;
+	document.getElementById('ft_list').prepend(div);
+}
+		</script>
+	</body>
+</html>
