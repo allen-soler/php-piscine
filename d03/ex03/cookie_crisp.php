@@ -9,7 +9,7 @@ if ($_GET['action'] == "set")
 else if ($_GET['action'] == "get")
 {
 	if ($_COOKIE)
-		echo $_COOKIE['plat'] . "\n"; 
+		echo $_COOKIE[$_POST['name']] . "\n"; 
 }
 else if ($_GET['action'] == "del")
 {
