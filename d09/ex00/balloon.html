@@ -1,0 +1,47 @@
+<html>
+	<body>
+		<div id="btn" style="width: 200px; height: 200px; background-color:red; border-radius: 50%;"></div>
+		<script>
+document.getElementById("btn").onclick = function() {myFunction()};
+document.getElementById("btn").onmouseout = function() {myFunction1()};
+
+function myFunction() {
+	let w = document.getElementById('btn').offsetWidth;	
+	let h = document.getElementById('btn').offsetHeight;
+	let color = document.getElementById('btn').style.backgroundColor;
+	if (w + 10 >= 420)
+	{
+		document.getElementById("btn").style.width = 200;
+		document.getElementById("btn").style.height = 200;
+	}
+	else
+	{
+		document.getElementById("btn").style.width = w + 10;
+		document.getElementById("btn").style.height = h + 10;
+	}
+	if (color === "red")
+		document.getElementById("btn").style.backgroundColor = "green";
+	else if (color === "green")
+		document.getElementById("btn").style.backgroundColor = "blue";
+	else
+		document.getElementById("btn").style.backgroundColor = "red";
+}
+function myFunction1() {
+	let w = document.getElementById('btn').offsetWidth;	
+	let h = document.getElementById('btn').offsetHeight;
+	let color = document.getElementById('btn').style.backgroundColor;
+	if (w > 200)
+	{
+		document.getElementById("btn").style.width = w - 5;
+		document.getElementById("btn").style.height = h - 5;
+	}
+	if (color === "red")
+		document.getElementById("btn").style.backgroundColor = "green";
+	else if (color === "green")
+		document.getElementById("btn").style.backgroundColor = "blue";
+	else
+		document.getElementById("btn").style.backgroundColor = "red";
+}
+		</script>
+	</body>
+</html>
