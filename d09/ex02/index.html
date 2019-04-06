@@ -7,12 +7,69 @@
 		</div>
 		<input id="submit" type="submit" value="new">
 		<script>
-document.getElementById("submit").onclick = function() {myFunction()};
-function myFunction() {
-	let txt = prompt("Saisissez votre texte :", "Texte");
-	let div = document.createElement("div");
-	div.innerHTML = txt;
-	document.getElementById('ft_list').prepend(div);
+var arr = new Array();
+var	obj;
+
+document.getElementById("submit").onclick = function()
+{
+	myFunction()
+};
+
+window.onload = function()
+{
+	let div;
+
+	obj = document.cookie;
+	arr = JSON.parse(obj);
+	arr.forEach(function (e) 
+			{
+				div = document.createElement("div");
+				div.innerHTML = e;
+				div.onclick = delete_cookie;
+				document.getElementById('ft_list').prepend(div);
+			});
+}
+
+function myFunction() 
+{
+	let txt;
+	let	div;
+
+	txt	= prompt("Saisissez votre texte :", "Texte");
+	if (txt)
+	{
+		div = document.createElement("div");
+		div.innerHTML = txt;
+		div.onclick = delete_cookie;
+		arr.push(txt);
+		document.getElementById('ft_list').prepend(div);
+		bake_cookie(arr);
+	}
+}
+
+function bake_cookie(value) 
+{
+	let cookie;
+
+	cookie = JSON.stringify(value);
+	document.cookie = cookie;
+}
+
+function delete_cookie()
+{
+	if (confirm("Confirm") == true)
+	{
+		let j = arr.length;
+		let tmp = this.innerHTML;
+		for (let i = 0; i < j; i++) {
+			if (arr[i] === tmp) {
+				arr.splice(i, 1);
+				break ;
+			}
+		}
+		bake_cookie(arr);
+		this.remove();
+	}
 }
 		</script>
 	</body>
