@@ -43,6 +43,7 @@ function modifPasswd() {
 
         $data = serialize($data);
         file_put_contents('../private/passwd', $data);
+        header('Location: index.html');
         echo "OK\n";
     }
 }

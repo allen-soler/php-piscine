@@ -10,7 +10,6 @@ function check_existance($data, $username) {
 }
 
 function storePasswd() {
-
     if (!file_exists('../private')) {
         mkdir('../private');
     }
@@ -33,6 +32,7 @@ function storePasswd() {
 
         $data = serialize($data);
         file_put_contents('../private/passwd', $data);
+        header('Location: index.html');
         echo "OK\n";
     }
 }
