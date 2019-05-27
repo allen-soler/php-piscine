@@ -1,29 +1,33 @@
-#!/usr/bin/php
+#/usr/bin/php
 <?php
-function replace($str, $arr)
-{
-	echo "$str\n";
-	print_r($arr);
+
+function callback_toupper($matches) {
+    return ($matches[1] . "" . strtoupper($matches[2]) . "" . $matches[3]);
 }
 
-$fd = fopen($argv[1], r);
-while ($line = fgets($fd))
-{
-	$str .= $line;
+function callback($matches) {
+    $title = '/( title=\")(.*?)(\")/mi';
+    $matches[0] = preg_replace_callback($title, "callback_toupper", $matches[0]);
+
+    $text = '/(>)(.*?)(<)/si';
+    $matches[0] = preg_replace_callback($text, "callback_toupper", $matches[0]);
+
+    return ($matches[0]);
 }
-fclose($fd);
-preg_match_all("/(<a.*>.*<\/a>)/", $str, $arr, PREG_OFFSET_CAPTURE);
-$i = 0;
-$i = count($arr);
-echo $i . "\n";
-for ($j = 0; $j < $i; $j++)
+
+if ($argc > 1 && file_exists($argv[1]))
 {
-	foreach ($arr[$j] as $key => $value)
-	{
-		var_dump($value);
-		/*$line[] = preg_replace_callback("/( title=\")(.*?)(\")/",
-			function ($matches) { return var_dump($matches);}, $value);*/
-	}
+    $fd = fopen($argv[1], "r");
+
+    while (!feof($fd))
+    {
+        $line .= fgets($fd);
+    }
+    fclose($fd);
+
+    $anchor = "/(<a\s+)(.*?)(>)(.*)(<\/a>)/si";
+    $line = preg_replace_callback($anchor,"callback", $line);
+
+    echo "$line";
 }
-//$str = replace($str, $arr);
 ?>

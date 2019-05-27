@@ -1,1 +1,1 @@
-select count(duration) as `nb_short-films` FROM film WHERE duration <= 42;
+select count(*) as `nb_short-films` from film where film.duration <=42;

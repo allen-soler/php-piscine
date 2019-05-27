@@ -1,1 +1,1 @@
-select title, summary FROM film WHERE lower(summary) LIKE '%vincent%' AND id_film ORDER BY id_film;
+select title, summary from film where lower(summary) like '%vincent%' order by film.id_film ASC;

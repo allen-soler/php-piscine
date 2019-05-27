@@ -1,1 +1,4 @@
-mysql> select last_name, first_name, SUBSTRING(birthdate, 1, 10) as birthdate FROM user_card WHERE year(date(birthdate))=1989 ORDER BY last_name;
+select last_name, first_name, DATE_FORMAT(birthdate, "%Y-%m-%d") as `birthdate`
+from user_card
+where year(birthdate) = 1989
+order by last_name asc;

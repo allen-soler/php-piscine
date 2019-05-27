@@ -1,1 +1,1 @@
-select title, summary FROM film WHERE title LIKE '%42%' OR summary LIKE '%42%' AND id_film ORDER BY duration;
+select title, summary from film where summary like '%42%' or title like '%42%' order by film.duration;

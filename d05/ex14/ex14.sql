@@ -1,1 +1,1 @@
-SELECT floor_number, SUM(nb_seats) as 'seat' FROM cinema GROUP BY floor_number ORDER BY `seat` DESC;
+select floor_number as `floor`, sum(nb_seats) as `seats` from cinema group by floor_number order by seats desc;
